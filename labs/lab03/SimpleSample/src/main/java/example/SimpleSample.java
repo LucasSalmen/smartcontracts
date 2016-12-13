@@ -101,8 +101,10 @@ public class SimpleSample extends ChaincodeBase {
 		}		
 		if(valA>valFrom)
 			return "{\"Error\":\"Insufficient asset holding value for requested transfer amount \"}";
-		valFrom = valFrom-valA;
-		valTo = valTo+valA;
+		float taxalucas=2;
+
+		valFrom = valFrom-valA-taxalucas;
+		valTo = valTo+valA-taxalucas;
 		System.out.println("Transfer "+fromName+">"+toName+" am='"+am+"' new values='"+valFrom+"','"+ valTo+"'");
 		stub.putState(fromName,""+ valFrom);
 		stub.putState(toName, ""+valTo);		
@@ -150,7 +152,7 @@ public class SimpleSample extends ChaincodeBase {
 
 	@Override
 	public String getChaincodeID() {
-		return "Lucas";
+		return "LucasSalmen";
 	}
 
 	public static void main(String[] args) throws Exception {
